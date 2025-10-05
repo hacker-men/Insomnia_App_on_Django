@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Sleep Statistics{% endblock %}
+{% block content %}
+<h2>Sleep Statistics</h2>
+<p>Total Logs: {{ total_logs }}</p>
+<p>Average Duration: {{ avg_duration|floatformat:1 }} hours</p>
+<!-- Add Chart.js for visuals -->
+<div id="quality-chart">Quality Breakdown: {{ quality_counts }}</div>  <!-- Integrate Chart.js here -->
+{% endblock %}

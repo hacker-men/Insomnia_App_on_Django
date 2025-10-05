@@ -1,0 +1,242 @@
+/* Dark Theme for Insomnia App - Night-Friendly */
+/* Global Styles */
+body {
+    background-color: #121212;  /* Deep black background */
+    color: #e0e0e0;            /* Light gray text for readability */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;          /* Improved readability */
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;            /* Pure white for headings */
+    font-weight: 300;          /* Lighter weight for calm feel */
+}
+
+/* Container and Content */
+.container {
+    background-color: #121212;
+    max-width: 1200px;         /* Slightly wider for comfort */
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+/* Navigation Bar - Dark Variant */
+.navbar {
+    background-color: #1e1e1e !important;  /* Dark gray nav */
+    border-bottom: 1px solid #333333;      /* Subtle border */
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-weight: 400;
+}
+
+.nav-link {
+    color: #b0b0b0 !important;             /* Muted gray links */
+}
+
+.nav-link:hover {
+    color: #0d47a1 !important;             /* Calm blue on hover */
+    background-color: #2a2a2a;             /* Subtle hover bg */
+}
+
+/* Alerts/Messages - Dark Adapted */
+.alert {
+    border: none;
+    border-radius: 8px;
+    color: #e0e0e0;
+}
+
+.alert-success {
+    background-color: #2e7d32;             /* Dark green for success */
+    border-left: 4px solid #4caf50;
+}
+
+.alert-error {
+    background-color: #c62828;             /* Dark red for errors */
+    border-left: 4px solid #f44336;
+}
+
+/* Forms - Dark Input Fields */
+.form-control {
+    background-color: #2a2a2a;             /* Dark input bg */
+    border: 1px solid #444444;             /* Subtle border */
+    color: #e0e0e0;                        /* Light text */
+    border-radius: 6px;
+}
+
+.form-control:focus {
+    background-color: #2a2a2a;
+    border-color: #0d47a1;                 /* Blue focus */
+    color: #e0e0e0;
+    box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, 0.25);
+}
+
+.form-label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Buttons - Dark Theme Overrides */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;            /* Smooth transitions */
+}
+
+.btn-primary {
+    background-color: #0d47a1;             /* Calm blue */
+    border-color: #0d47a1;
+}
+
+.btn-primary:hover {
+    background-color: #1565c0;             /* Lighter blue on hover */
+    border-color: #1565c0;
+}
+
+.btn-success {
+    background-color: #2e7d32;             /* Dark green */
+    border-color: #2e7d32;
+}
+
+.btn-success:hover {
+    background-color: #4caf50;             /* Brighter green on hover */
+    border-color: #4caf50;
+}
+
+.btn-info {
+    background-color: #0277bd;             /* Muted blue for info */
+    border-color: #0277bd;
+}
+
+/* Cards - Dark Variant */
+.card {
+    background-color: #1e1e1e;             /* Dark card bg */
+    border: 1px solid #333333;             /* Subtle border */
+    border-radius: 10px;                   /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);  /* Soft shadow */
+    color: #e0e0e0;
+}
+
+.card-title {
+    color: #ffffff;
+}
+
+.card-text {
+    color: #b0b0b0;                        /* Slightly muted for body text */
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Tables - Dark Theme */
+.table {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+.table th {
+    background-color: #2a2a2a;             /* Darker header */
+    color: #ffffff;
+    border-bottom: 2px solid #333333;
+}
+
+.table td {
+    border-color: #333333;
+}
+
+.table tbody tr:hover {
+    background-color: #2a2a2a;             /* Hover effect */
+}
+
+/* Links */
+a {
+    color: #0d47a1;                        /* Calm blue links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1565c0;
+    text-decoration: underline;
+}
+
+/* Specific to Insomnia App Elements */
+/* Home Page Tips Cards */
+.row .col-md-4 .card,
+.row .col-md-6 .card {
+    margin-bottom: 1.5rem;
+    transition: transform 0.2s ease;
+}
+
+.row .col-md-4 .card:hover,
+.row .col-md-6 .card:hover {
+    transform: translateY(-2px);           /* Subtle lift on hover */
+}
+
+/* Dashboard List */
+ul {
+    list-style-type: none;                 /* Clean lists */
+    padding-left: 0;
+}
+
+ul li {
+    background-color: #2a2a2a;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border-left: 4px solid #0d47a1;        /* Blue accent */
+}
+
+/* Statistics Page - Placeholder for Charts (e.g., Chart.js) */
+#quality-chart {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    color: #e0e0e0;
+}
+
+/* Footer (if added later) */
+footer {
+    background-color: #1e1e1e;
+    color: #b0b0b0;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #333333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Print Styles (Optional - for dark mode printing) */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    .card, .navbar {
+        background-color: white !important;
+        color: black !important;
+    }
+}

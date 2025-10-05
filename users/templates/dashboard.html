@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2>Welcome, {{ profile.firstname }}!</h2>
+<p>Age: {{ profile.age }} | Recent Sleep:</p>
+<ul>
+    {% for log in recent_sleep %}
+    <li>{{ log.date }} - {{ log.quality }} ({{ log.duration_hours }} hrs)</li>
+    {% empty %}
+    <li>No recent logs. <a href="{% url 'sleep_history' %}">Start tracking</a>.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'sleep_history' %}" class="btn btn-info">Log Sleep</a>
+{% endblock %}

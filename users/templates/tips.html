@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Tips{% endblock %}
+{% block content %}
+<h2>Insomnia Tips</h2>
+<div class="row">
+    {% for tip in tips %}
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ tip.title }}</h5>
+                <p class="card-text">{{ tip.content }}</p>
+                <small>Category: {{ tip.category }}</small>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No tips available. Check back soon!</p>
+    {% endfor %}
+</div>
+{% endblock %}

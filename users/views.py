@@ -3,9 +3,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User as AuthUser
 from django.contrib import messages
-from django.http import HttpResponse
-from django.db import models
-from django.db.models import Count
 from .models import Profile, SleepLog, Tip
 from .forms import SleepLogForm
 
@@ -113,10 +110,53 @@ def sleep_history(request):
 #    return render(request, 'sleep_statistics.html', context)
 
 @login_required
+# def tips(request):
+#     """Insomnia tips page."""
+#     all_tips = Tip.objects.all()
+#     context = {'tips': all_tips}
+#     return render(request, 'tips.html', context)
 def tips(request):
-    """Insomnia tips page."""
-    all_tips = Tip.objects.all()
-    context = {'tips': all_tips}
+    """
+    Show tips; for authenticated users pick tips based on last SleepLog.
+    Fallback: show all tips if no matching category or anonymous user.
+    """
+    # base queryset: all tips (we will filter later)
+    tips_qs = Tip.objects.all()
+
+    chosen_category = None
+    if request.user.is_authenticated:
+        last_log = SleepLog.objects.filter(user=request.user).order_by('-date', '-id').first()
+        if last_log:
+            # Rule 1: poor quality -> relaxation tips
+            if getattr(last_log, 'quality', None) == 'poor':
+                chosen_category = 'relaxation'
+            # Rule 2: short sleep -> routine tips
+            elif last_log.duration_hours is not None and last_log.duration_hours < 6:
+                chosen_category = 'routine'
+            # Rule 3: if start/end present and long sleep_start_time after midnight or long wake -> environment
+            elif last_log.sleep_start_time and last_log.sleep_end_time:
+                # simple heuristic: if start hour >= 1 AM or end hour <= 6 AM -> environment tips
+                try:
+                    start_h = last_log.sleep_start_time.hour
+                    end_h = last_log.sleep_end_time.hour
+                    if start_h >= 1 or end_h <= 6:
+                        chosen_category = 'environment'
+                except Exception:
+                    chosen_category = None
+
+    # If a category matched — filter tips by it; otherwise keep all tips (or show most relevant)
+    if chosen_category:
+        filtered = tips_qs.filter(category=chosen_category)
+        # If no tips in that category, fallback to all tips
+        tips_to_show = filtered if filtered.exists() else tips_qs
+    else:
+        tips_to_show = tips_qs
+
+    context = {
+        'tips': tips_to_show,
+        'chosen_category': chosen_category,
+        'last_log': last_log if request.user.is_authenticated else None,
+    }
     return render(request, 'tips.html', context)
 
 @login_required

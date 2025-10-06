@@ -3,6 +3,10 @@
 {% block content %}
 <h2>Insomnia Tips</h2>
 <div class="row">
+    {% if chosen_category %}
+    <p class="mb-2"><strong>Recommended category:</strong> {{ chosen_category|capfirst }} (based on your last sleep on {{ last_log.date }}) —
+    <a href="{% url 'tips' %}">Show all tips</a></p>
+    {% endif %}
     {% for tip in tips %}
     <div class="col-md-6">
         <div class="card">

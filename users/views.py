@@ -5,6 +5,7 @@ from django.contrib.auth.models import User as AuthUser
 from django.contrib import messages
 from django.http import HttpResponse
 from .models import Profile, SleepLog, Tip
+from .forms import SleepLogForm
 
 def home(request):
     """Home page - public landing for insomnia app."""
@@ -57,9 +58,20 @@ def dashboard(request):
 
 @login_required
 def sleep_history(request):
-    """View sleep logs/history."""
+    """View sleep logs/history and allow creating new logs."""
+    if request.method == 'POST':
+        form = SleepLogForm(request.POST)
+        if form.is_valid():
+            log = form.save(commit=False)
+            log.user = request.user
+            log.save()
+            messages.success(request, 'Sleep log added.')
+            return redirect('sleep_history')
+    else:
+        form = SleepLogForm()
+
     sleep_logs = SleepLog.objects.filter(user=request.user).order_by('-date')
-    context = {'sleep_logs': sleep_logs}
+    context = {'sleep_logs': sleep_logs, 'form': form}
     return render(request, 'sleep_history.html', context)
 
 @login_required

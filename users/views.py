@@ -153,7 +153,7 @@ def tips(request):
         tips_to_show = tips_qs
 
     context = {
-        'tips': tips_to_show,
+        'tips': list(tips_to_show),
         'chosen_category': chosen_category,
         'last_log': last_log if request.user.is_authenticated else None,
     }

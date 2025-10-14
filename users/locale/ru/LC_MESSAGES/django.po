@@ -131,17 +131,11 @@ msgstr "Имя"
 msgid "Last name"
 msgstr "Фамилия"
 
-msgid "Age"
-msgstr "Возраст"
-
 msgid "Profile"
 msgstr "Профиль"
 
 msgid "Profiles"
 msgstr "Профили"
-
-msgid "Date"
-msgstr "Дата"
 
 msgid "Sleep start time"
 msgstr "Время начала сна"
@@ -155,9 +149,6 @@ msgstr "Продолжительность (часы)"
 msgid "Total sleep in hours"
 msgstr "Общее время сна в часах"
 
-msgid "Quality"
-msgstr "Качество"
-
 msgid "Good"
 msgstr "Хорошее"
 
@@ -166,9 +157,6 @@ msgstr "Среднее"
 
 msgid "Poor"
 msgstr "Плохое"
-
-msgid "Notes"
-msgstr "Заметки"
 
 msgid "Any notes on sleep issues or factors"
 msgstr "Любые заметки о проблемах со сном или факторах"
@@ -200,5 +188,23 @@ msgstr "Окружающая среда"
 msgid "Tip"
 msgstr "Совет"
 
-msgid "Tips"
-msgstr "Советы"
+msgid "Welcome"
+msgstr "Добро пожаловать"
+
+msgid "Age: "
+msgstr "Возраст: "
+
+msgid "Recent Sleep:"
+msgstr "Недавний сон:"
+
+msgid "hrs"
+msgstr "ч"
+
+msgid "No recent logs."
+msgstr "Нет недавних записей."
+
+msgid "Start tracking"
+msgstr "Начать отслеживание"
+
+msgid "Log Sleep"
+msgstr "Добавить запись сна"

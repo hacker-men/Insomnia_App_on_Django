@@ -129,17 +129,11 @@ msgstr "Ism"
 msgid "Last name"
 msgstr "Familiya"
 
-msgid "Age"
-msgstr "Yosh"
-
 msgid "Profile"
 msgstr "Profil"
 
 msgid "Profiles"
 msgstr "Profillar"
-
-msgid "Date"
-msgstr "Sana"
 
 msgid "Sleep start time"
 msgstr "Uyqu boshlanish vaqti"
@@ -153,9 +147,6 @@ msgstr "Davomiyligi (soatlarda)"
 msgid "Total sleep in hours"
 msgstr "Uyquning jami davomiyligi (soatlarda)"
 
-msgid "Quality"
-msgstr "Sifat"
-
 msgid "Good"
 msgstr "Yaxshi"
 
@@ -164,9 +155,6 @@ msgstr "O‘rtacha"
 
 msgid "Poor"
 msgstr "Yomon"
-
-msgid "Notes"
-msgstr "Izohlar"
 
 msgid "Any notes on sleep issues or factors"
 msgstr "Uyqu bilan bog‘liq muammolar yoki omillar haqida izohlar"
@@ -198,5 +186,24 @@ msgstr "Atrof-muhit"
 msgid "Tip"
 msgstr "Maslahat"
 
-msgid "Tips"
-msgstr "Maslahatlar"
+msgid "Welcome"
+msgstr "Xush kelibsiz"
+
+msgid "Age: "
+msgstr "Yosh: "
+
+msgid "Recent Sleep:"
+msgstr "So‘nggi uyqu:"
+
+msgid "hrs"
+msgstr "soat"
+
+msgid "No recent logs."
+msgstr "So‘nggi yozuvlar yo‘q."
+
+msgid "Start tracking"
+msgstr "Kuzatishni boshlang"
+
+msgid "Log Sleep"
+msgstr "Uyquni yozish"
+

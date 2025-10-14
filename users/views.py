@@ -73,48 +73,7 @@ def sleep_history(request):
     context = {'sleep_logs': sleep_logs, 'form': form}
     return render(request, 'sleep_history.html', context)
 
-#@login_required
-#def sleep_statistics(request):
-#    sleep_logs = SleepLog.objects.filter(user=request.user)
-#    total = sleep_logs.count()
-#    if total:
-#        # защищённый суммирование: пропускаем None
-#        durations = [log.duration_hours for log in sleep_logs if log.duration_hours is not None]
-#        avg_duration = round(sum(durations) / len(durations), 2) if durations else 0
-#        # Если в модели есть QUALITY_CHOICES, используйте их; иначе извлеките уникальные значения
-#        try:
-#            choices = SleepLog._meta.get_field('quality').choices
-#        except Exception:
-    #         choices = []
-    #     quality_counts = {}
-    #     if choices:
-    #         for key, _label in choices:
-    #             quality_counts[key] = sleep_logs.filter(quality=key).count()
-    #     else:
-    #         # fallback — все существующие значения
-    #         for q, cnt in sleep_logs.values_list('quality', flat=True).distinct().annotate(count=models.Count('quality')):
-    #             pass
-    #         # проще: use values/annotate
-    #         from django.db.models import Count
-    #         qc = sleep_logs.values('quality').annotate(count=Count('quality'))
-    #         quality_counts = {item['quality']: item['count'] for item in qc}
-    # else:
-    #     avg_duration = 0
-    #     quality_counts = {}
-
-#    context = {
-#        'avg_duration': avg_duration,
-#        'quality_counts': quality_counts,
-#        'total_logs': total,
-#    }
-#    return render(request, 'sleep_statistics.html', context)
-
 @login_required
-# def tips(request):
-#     """Insomnia tips page."""
-#     all_tips = Tip.objects.all()
-#     context = {'tips': all_tips}
-#     return render(request, 'tips.html', context)
 def tips(request):
     """
     Show tips; for authenticated users pick tips based on last SleepLog.

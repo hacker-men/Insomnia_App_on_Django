@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-{% block title %}Tips{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Tips" %}{% endblock %}
 {% block content %}
-<h2>Insomnia Tips</h2>
+<h2>{% trans "Insomnia Tips" %}</h2>
 {% if chosen_category %}
-    <p class="mb-2"><strong>Recommended category:</strong> {{ chosen_category|capfirst }} (based on your last sleep on {{ last_log.date }}) —
-    <a href="{% url 'tips' %}">Show all tips</a></p>
+    <p class="mb-2">
+        <strong>{% trans "Recommended category:" %}</strong>
+        {{ chosen_category|capfirst }} ({% trans "based on your last sleep on" %} {{ last_log.date }}) —
+        <a href="{% url 'tips' %}">{% trans "Show all tips" %}</a>
+    </p>
 {% endif %}    
 <div class="row">
     {% for tip in tips %}
@@ -13,12 +17,12 @@
             <div class="card-body">
                 <h5 class="card-title">{{ tip.title }}</h5>
                 <p class="card-text">{{ tip.content }}</p>
-                <small>Category: {{ tip.category }}</small>
+                <small>{% trans "Category:" %} {{ tip.category }}</small>
             </div>
         </div>
     </div>
     {% empty %}
-    <p>No tips available. Check back soon!</p>
+    <p>{% trans "No tips available. Check back soon!" %}</p>
     {% endfor %}
 </div>
 {% endblock %}

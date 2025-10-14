@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
-{% block title %}Register{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Register" %}{% endblock %}
 {% block content %}
-<h2>Register</h2>
+<h2>{% trans "Register" %}</h2>
 <form method="post">
     {% csrf_token %}
     <div class="mb-3">
-        <label>Username</label>
+        <label>{% trans "Username" %}</label>
         <input type="text" name="username" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label>Password</label>
+        <label>{% trans "Password" %}</label>
         <input type="password" name="password" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label>First Name</label>
+        <label>{% trans "First Name" %}</label>
         <input type="text" name="firstname" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label>Last Name</label>
+        <label>{% trans "Last Name" %}</label>
         <input type="text" name="lastname" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label>Age</label>
+        <label>{% trans "Age" %}</label>
         <input type="number" name="age" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-success">Register</button>
+    <button type="submit" class="btn btn-success">{% trans "Register" %}</button>
 </form>
 {% endblock %}

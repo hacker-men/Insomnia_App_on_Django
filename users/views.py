@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User as AuthUser
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from .models import Profile, SleepLog, Tip
 from .forms import SleepLogForm
 
@@ -24,7 +25,7 @@ def register(request):
         # Create user with built-in auth
         user = AuthUser.objects.create_user(username=username, password=password)
         profile = Profile.objects.create(user=user, firstname=firstname, lastname=lastname, age=age)
-        messages.success(request, 'Registration successful! Please log in.')
+        messages.success(request, _('Registration successful! Please log in.'))
         return redirect('login')
     
     return render(request, 'register.html')
@@ -37,10 +38,10 @@ def login_view(request):  # Renamed to avoid conflict with built-in
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, 'Login successful!')
+            messages.success(request, _('Login successful!'))
             return redirect('dashboard')
         else:
-            messages.error(request, 'Invalid credentials.')
+            messages.error(request, _('Invalid credentials.'))
     
     return render(request, 'login.html')
 
@@ -64,7 +65,7 @@ def sleep_history(request):
             log = form.save(commit=False)
             log.user = request.user
             log.save()
-            messages.success(request, 'Sleep log added.')
+            messages.success(request, _('Sleep log added.'))
             return redirect('sleep_history')
     else:
         form = SleepLogForm()
@@ -122,5 +123,5 @@ def tips(request):
 def logout_view(request):
     """Logout and redirect to home."""
     logout(request)
-    messages.success(request, 'Logged out successfully.')
+    messages.success(request, _('Logged out successfully.'))
     return redirect('home')

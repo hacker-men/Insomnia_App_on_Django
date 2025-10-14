@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Home - Insomnia Relief{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Home - Insomnia Relief" %}{% endblock %}
 {% block content %}
-<h1>Welcome to Insomnia Relief App</h1>
-<p>Track your sleep, view statistics, and get tips to improve your rest.</p>
+<h1>{% trans "Welcome to Insomnia Relief App" %}</h1>
+<p>{% trans "Track your sleep, view statistics, and get tips to improve your rest." %}</p>
 <div class="row">
     {% for tip in tips %}
     <div class="col-md-4">
@@ -15,5 +16,5 @@
     </div>
     {% endfor %}
 </div>
-<a href="{% url 'register' %}" class="btn btn-primary">Get Started</a>
+<a href="{% url 'register' %}" class="btn btn-primary">{% trans "Get Started" %}</a>
 {% endblock %}

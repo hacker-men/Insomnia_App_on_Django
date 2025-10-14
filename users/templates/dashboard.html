@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<h2>Welcome, {{ profile.firstname }}!</h2>
-<p>Age: {{ profile.age }} | Recent Sleep:</p>
+<h2>{% trans "Welcome, " %}{{ profile.firstname }}!</h2>
+<p>{% trans "Age: "%}{{ profile.age }} | {% trans "Recent Sleep:" %}</p>
 <ul>
     {% for log in recent_sleep %}
-    <li>{{ log.date }} - {{ log.quality }} ({{ log.duration_hours }} hrs)</li>
+    <li>{{ log.date }} - {{ log.quality }} ({{ log.duration_hours }} {% trans "hrs" %})</li>
     {% empty %}
-    <li>No recent logs. <a href="{% url 'sleep_history' %}">Start tracking</a>.</li>
+    <li>{% trans "No recent logs. " %} <a href="{% url 'sleep_history' %}">{% trans "Start tracking" %}</a>.</li>
     {% endfor %}
 </ul>
-<a href="{% url 'sleep_history' %}" class="btn btn-info">Log Sleep</a>
+<a href="{% url 'sleep_history' %}" class="btn btn-info">{% trans "Log Sleep" %}</a>
 {% endblock %}

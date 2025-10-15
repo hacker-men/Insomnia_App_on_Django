@@ -217,6 +217,24 @@ footer {
     .container {
         padding-left: 1rem;
         padding-right: 1rem;
+        max-width: 100% !important;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .table th, .table td {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .btn, .form-control {
+        font-size: 1rem;
     }
     
     .navbar-nav {

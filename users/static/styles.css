@@ -44,6 +44,38 @@ p {
     color: #8ab4f8 !important;
 }
 
+/* === Language Switcher (select dropdown) === */
+.form-select {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e2e6;
+    border-radius: 8px;
+    padding: 0.35rem 1.8rem 0.35rem 0.8rem;
+    font-size: 0.9rem;
+    appearance: none;              /* скрываем стандартную стрелку */
+    background-image: url("data:image/svg+xml,%3Csvg fill='%23b0b0b0' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.6rem center;
+    background-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.form-select:hover {
+    border-color: #7b5cff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #7b5cff;
+    box-shadow: 0 0 6px rgba(123, 92, 255, 0.4);
+}
+
+.form-select option {
+    background-color: #1a1a25; /* фон выпадающего списка */
+    color: #e2e2e6;
+}
+
 /* Buttons */
 .btn {
     border-radius: 10px;
@@ -52,6 +84,15 @@ p {
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
+
+/* space between tips row and following CTA button */
+.row + .btn,
+.row + .btn-primary {
+    display: inline-block;
+    margin-top: 1.5rem; /* отступ сверху */
+    margin-bottom: 0.5rem;
+}
+
 
 .btn-primary {
     background: linear-gradient(135deg, #3a6ff8, #7b5cff);
@@ -80,9 +121,14 @@ p {
     color: #e2e2e6;
     border-radius: 8px;
     transition: all 0.2s ease;
+    color: #e2e2e6;
+    -webkit-text-fill-color: #e2e2e6; /* для webkit-браузеров (автозаполнение / ввод) */
+    caret-color: #7b5cff;             /* видимый курсор */
 }
 
 .form-control:focus {
+    color: #e2e2e6;
+    -webkit-text-fill-color: #e2e2e6;
     border-color: #7b5cff;
     box-shadow: 0 0 8px rgba(123,92,255,0.4);
     background: rgba(255,255,255,0.08);
@@ -139,8 +185,9 @@ ul li:hover {
 }
 
 .alert-success {
-    background: rgba(76, 175, 80, 0.2);
+    background: linear-gradient(90deg, rgba(76,175,80,0.14), rgba(46,125,50,0.08));
     border-left: 4px solid #4caf50;
+    color: #eafaf0; /* светлый, читаемый цвет текста */
 }
 
 .alert-error {
@@ -153,14 +200,25 @@ footer {
     background: rgba(20, 20, 30, 0.8);
     color: #a0a0a5;
     text-align: center;
-    padding: 1.2rem;
+    padding: 1rem 0;
     margin-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
 }
 
-/* Smooth hover & animation */
-* {
-    transition: all 0.2s ease-in-out;
+footer a {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* целевые, безопасные переходы вместо глобального `*` */
+a, .btn, .card, .form-control, .nav-link {
+    transition: color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
 /* Mobile */

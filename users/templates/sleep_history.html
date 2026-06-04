@@ -42,4 +42,58 @@
         {% endfor %}
     </tbody>
 </table>
+
+<hr>
+<h3>{% trans "Sleep Statistics" %}</h3>
+
+<canvas id="sleepLineChart" width="400" height="200"></canvas>
+<canvas id="sleepBarChart" width="400" height="200" class="mt-4"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Подготовка данных из sleep_logs
+  const dates = [{% for log in sleep_logs %}"{{ log.date }}",{% endfor %}];
+  const durations = [{% for log in sleep_logs %}{{ log.duration_hours }},{% endfor %}];
+  const qualities = [{% for log in sleep_logs %}"{{ log.quality }}",{% endfor %}];
+
+  // Линейный график длительности сна
+  new Chart(document.getElementById('sleepLineChart'), {
+    type: 'line',
+    data: {
+      labels: dates,
+      datasets: [{
+        label: 'Длительность сна (часы)',
+        data: durations,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        fill: true,
+        tension: 0.3
+      }]
+    }
+  });
+
+  // Подсчёт качества сна
+  const qualityCounts = {
+    good: qualities.filter(q => q === 'good').length,
+    fair: qualities.filter(q => q === 'fair').length,
+    poor: qualities.filter(q => q === 'poor').length
+  };
+
+  // Столбчатая диаграмма качества сна
+  new Chart(document.getElementById('sleepBarChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Хорошее', 'Среднее', 'Плохое'],
+      datasets: [{
+        label: 'Количество ночей',
+        data: [qualityCounts.good, qualityCounts.fair, qualityCounts.poor],
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(255, 99, 132, 0.6)'
+        ]
+      }]
+    }
+  });
+</script>
 {% endblock %}

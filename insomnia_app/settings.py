@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'channels',
 ]
 
-ASGI_APPLICATION = "myproject.asgi.application"
+ASGI_APPLICATION = "insomnia_app.asgi.application"
 
 CHANNEL_LAYERS = {
     "default": {

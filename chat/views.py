@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from chat.models import Message
 
-# Create your views here.
+def chat_view(request):
+    messages = Message.objects.all()[:20]
+    return render(request, "chat/index.html", {"messages": messages})

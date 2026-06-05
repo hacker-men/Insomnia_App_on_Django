@@ -41,7 +41,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             try:
                 profile = await self.get_profile(user)
                 sender = f"{profile.firstname} {profile.lastname}"
-                # сохраняем сообщение
                 await self.save_message(profile, message)
             except Profile.DoesNotExist:
                 sender = user.username
@@ -56,6 +55,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     "message": f"{sender}: {message}",
                 }
             )
+
+    async def chat_message(self, event):
+        """Обязательный метод: отправляет сообщение клиенту"""
+        await self.send(text_data=json.dumps({
+            "message": event["message"]
+        }))
+
+    @database_sync_to_async
+    def get_profile(self, user):
+        return Profile.objects.get(user=user)
 
     @database_sync_to_async
     def save_message(self, profile, content):
